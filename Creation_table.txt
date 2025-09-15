@@ -7,8 +7,6 @@ CREATE TABLE users (
     phone VARCHAR(20)
 );
 
---------------------------------------------------------------------------------
-
 CREATE TABLE products (
     product_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -17,14 +15,10 @@ CREATE TABLE products (
     stock_quantity INT NOT NULL DEFAULT 0
 );
 
---------------------------------------------------------------------------------
-
 CREATE TABLE categories (
     category_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE
 );
-
---------------------------------------------------------------------------------
 
 CREATE TABLE product_categories (
     product_id INT NOT NULL,
@@ -34,8 +28,6 @@ CREATE TABLE product_categories (
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
 
---------------------------------------------------------------------------------
-
 CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
@@ -43,8 +35,6 @@ CREATE TABLE orders (
     total_amount NUMERIC(10,2) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
-
---------------------------------------------------------------------------------
 
 CREATE TABLE order_items (
     order_item_id SERIAL PRIMARY KEY,
@@ -55,8 +45,6 @@ CREATE TABLE order_items (
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
-
---------------------------------------------------------------------------------
 
 CREATE TABLE payments (
     payment_id SERIAL PRIMARY KEY,
