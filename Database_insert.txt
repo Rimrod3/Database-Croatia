@@ -1,0 +1,50 @@
+-- Users (customers)
+INSERT INTO users (name, first_name, email, password_hash, address, phone)
+VALUES 
+('De chavena', 'Jean', 'john.chavena@example.com', '10 rue de la paix, Paris', '1234567890'),
+('Xelor', 'Emily', 'emily.xelor@example.com', '5 Victor Hugo Avenue, Paris', '0987654321');
+
+-- Categories
+INSERT INTO categories (name)
+VALUES 
+('Men'),
+('Women'),
+('Accessories'),
+('Winter');
+
+-- Products
+INSERT INTO products (name, description, price, stock_quantity)
+VALUES 
+('Sweater', 'Warm wool sweater ', 49.90, 50),
+('Beanie', 'Wool beanie for winter', 19.90, 100),
+('Scarf', 'Soft and elegant ', 39.90, 75);
+
+-- Link products to categories
+INSERT INTO product_categories (product_id, category_id)
+VALUES
+(1, 1), -- Sweater → Men
+(1, 4), -- Sweater → Winter
+(2, 3), -- Beanie → Accessories
+(2, 4), -- Beanie → Winter
+(3, 2), -- Scarf → Women
+(3, 4); -- Scarf → Winter
+
+-- Orders
+INSERT INTO orders (user_id, status, total_amount)
+VALUES
+(1, 'pending', 69.80), -- John orders Sweater + Beanie
+(2, 'pending', 39.90); -- Emily orders Scarf
+
+-- Order items
+INSERT INTO order_items (order_id, product_id, quantity, unit_price)
+VALUES
+(1, 1, 1, 49.90), -- Sweater
+(1, 2, 1, 19.90), -- Beanie
+(2, 3, 1, 39.90); -- Scarf
+
+-- Payments
+INSERT INTO payments (order_id, amount, method, status)
+VALUES
+(1, 69.80, 'Credit Card', 'paid'),
+(2, 39.90, 'PayPal', 'paid');
+
